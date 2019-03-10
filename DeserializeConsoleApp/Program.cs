@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ClassLib;
-
+using System.IO;
+using SerializeConsoleApp;
 
 namespace DeserializeConsoleApp
 {
@@ -13,8 +14,24 @@ namespace DeserializeConsoleApp
         static void Main(string[] args)
         {
             List<PC> pcList = new List<PC>();
-            Console.WriteLine(path);
+            string path = @"S:\new\listSerial.txt";
+            
+            using (BinaryReader reader = new BinaryReader(File.Open(path, FileMode.OpenOrCreate)))
+            {
+                for (int i = 0; reader.PeekChar() > -1; i++)
+                {
+                    PC pc = new PC();
+                    pc.Brand = reader.ReadString();
+                    Console.WriteLine(pc.Brand);
+                    pc.SerialNumber = reader.ReadString();
+                    Console.WriteLine(pc.SerialNumber);
+                    pc.CPU = reader.ReadString();
+                    Console.WriteLine(pc.CPU);
 
+                    pcList.Add(pc);
+                }
+            }
+            Console.ReadLine();
         }
     }
 }

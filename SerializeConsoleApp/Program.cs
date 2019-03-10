@@ -11,6 +11,7 @@ namespace SerializeConsoleApp
     public class Program
     {
         public static string path;
+        public static List<PC> pcList;
         static void Main(string[] args)
         {
             PC first = new PC("Delux", "CB08273383", "Intel Pentium");
@@ -18,7 +19,7 @@ namespace SerializeConsoleApp
             PC third = new PC("Dell", "004RMRH5Y182", "Intel Celeron");
             PC fourth = new PC("Lenovo", "604PNJC1S548", "Xeon");
 
-            List<PC> pcList = new List<PC>();
+            pcList = new List<PC>();
             pcList.Add(first); pcList.Add(second);
             pcList.Add(third); pcList.Add(fourth);
 
@@ -54,50 +55,11 @@ namespace SerializeConsoleApp
             {
                 foreach (var pc in pcList)
                 {
-                    writer.Write(pc.Brand + ", ");
-                    writer.Write(pc.SerialNumber + ", ");
-                    writer.Write(pc.CPU + "\n");
+                    writer.Write(pc.Brand);
+                    writer.Write(pc.SerialNumber);
+                    writer.Write(pc.CPU);
                 }
             }
         }
     }
-}
-/*string path = string.Empty;
-            Console.WriteLine("Программа для создания файла.");
-
-            DriveInfo[] drives = DriveInfo.GetDrives();
-            for (int i = 0; i < drives.Length; i++)
-            {
-                if (drives[i].IsReady)
-                    Console.WriteLine($"{i}.{drives[i].Name}");
-            }
-            Console.WriteLine("Выберите диск, в котором хотите создать файл, написав его порядковый номер: ");
-            var number = int.Parse(Console.ReadLine());
-
-            path = drives[number].Name;
-            Console.WriteLine($"Выбран диск {path}");
-
-            foreach (var directory in drives[number].RootDirectory.EnumerateDirectories())
-            {
-                Console.WriteLine($"Папка {directory.Name}");
-            }
-
-            Console.WriteLine("Укажите папку, в которую хотите сохранить данные: ");
-            var directoryName = Console.ReadLine();
-            path += directoryName;
-
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
-            }
-
-            string[] data = { "Akhmetkali", "Adilet", "27" };
-            path += @"\" + "data.txt";
-
-            using (var streamWriter = new StreamWriter(path))
-            {
-                for (int i = 0; i < data.Length; i++)
-                {
-                    streamWriter.WriteLine(data[i]);
-                }
-            }*/
+}       
