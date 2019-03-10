@@ -22,11 +22,8 @@ namespace DeserializeConsoleApp
                 {
                     PC pc = new PC();
                     pc.Brand = reader.ReadString();
-                    Console.WriteLine(pc.Brand);
                     pc.SerialNumber = reader.ReadString();
-                    Console.WriteLine(pc.SerialNumber);
                     pc.CPU = reader.ReadString();
-                    Console.WriteLine(pc.CPU);
 
                     pcList.Add(pc);
                 }
