@@ -19,19 +19,45 @@ namespace SerializeConsoleApp
             PC third = new PC("Dell", "004RMRH5Y182", "Intel Celeron");
             PC fourth = new PC("Lenovo", "604PNJC1S548", "Xeon");
 
-            List<PC> pcList = new List<PC>();
-            pcList.Add(first); pcList.Add(second);
-            pcList.Add(third); pcList.Add(fourth);
+            List<PC> pcList = new List<PC>
+            {
+                first, second, third, fourth
+            };
 
             DriveInfo[] drives = DriveInfo.GetDrives();
-            for (int i = 0; i < drives.Length; i++)
-            {
-                if(drives[i].IsReady)
-                    Console.WriteLine($"{i}.{drives[i].Name}");
-            }
-            Console.Write("Выберите диск в котором хотите создать файл, написав его порядковый номер: ");
-            int number = int.Parse(Console.ReadLine());
+            //Console.Write("Выберите диск в котором хотите создать файл, написав его порядковый номер: ");
+            //int number = int.Parse(Console.ReadLine());
 
+            bool check = false;
+            int number = 0;
+            while (!check)
+            {
+                Console.Clear();
+                for (int i = 0; i < drives.Length; i++)
+                {
+                    if (drives[i].IsReady)
+                        Console.WriteLine($"{i}.{drives[i].Name}");
+                }
+                Console.Write("Выберите диск в котором хотите создать файл, написав его букву: ");
+                string letter = Console.ReadLine();
+
+                for (int i = 0; i < drives.Length; i++)
+                {
+                    if (drives[i].IsReady)
+                        if (drives[i].Name.ToLower().Contains(letter))
+                        {
+                            number = i;
+                            check = true;
+                            break;
+                        }
+                }
+                if (!check)
+                {
+                    Console.Write("Вы выбрали не существующий диск. Нажмите Enter чтобы ввести заново...");
+                    Console.ReadLine();
+                }
+
+            }
             path = drives[number].Name;
             Console.WriteLine("Выбран диск {0}", path);
 
@@ -60,6 +86,7 @@ namespace SerializeConsoleApp
                     writer.Write(pc.CPU);
                 }
             }
+            Console.ReadLine();
         }
     }
 }       
