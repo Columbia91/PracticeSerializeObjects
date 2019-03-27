@@ -14,9 +14,9 @@ namespace DeserializeConsoleApp
         static void Main(string[] args)
         {
             List<PC> pcList = new List<PC>();
-            string path = @"S:\new\listSerial.txt";
+            //string path = @"S:\new\listSerial.txt";
             
-            using (BinaryReader reader = new BinaryReader(File.Open(path, FileMode.OpenOrCreate)))
+            using (BinaryReader reader = new BinaryReader(File.Open(SerializeConsoleApp.Program.path, FileMode.OpenOrCreate)))
             {
                 for (int i = 0; reader.PeekChar() > -1; i++)
                 {
@@ -27,6 +27,11 @@ namespace DeserializeConsoleApp
 
                     pcList.Add(pc);
                 }
+            }
+
+            foreach (var pc in pcList)
+            {
+                Console.WriteLine($"{pc.Brand} {pc.SerialNumber} {pc.CPU}");
             }
             Console.ReadLine();
         }

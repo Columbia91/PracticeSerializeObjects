@@ -11,7 +11,7 @@ namespace SerializeConsoleApp
     public class Program
     {
         public static string path;
-        public static List<PC> pcList;
+        //public static List<PC> pcList;
         static void Main(string[] args)
         {
             PC first = new PC("Delux", "CB08273383", "Intel Pentium");
@@ -19,7 +19,7 @@ namespace SerializeConsoleApp
             PC third = new PC("Dell", "004RMRH5Y182", "Intel Celeron");
             PC fourth = new PC("Lenovo", "604PNJC1S548", "Xeon");
 
-            pcList = new List<PC>();
+            List<PC> pcList = new List<PC>();
             pcList.Add(first); pcList.Add(second);
             pcList.Add(third); pcList.Add(fourth);
 
