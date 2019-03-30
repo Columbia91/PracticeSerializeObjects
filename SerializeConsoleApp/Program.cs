@@ -10,8 +10,6 @@ namespace SerializeConsoleApp
 {
     public class Program
     {
-        public static string path;
-        //public static List<PC> pcList;
         static void Main(string[] args)
         {
             PC first = new PC("Delux", "CB08273383", "Intel Pentium");
@@ -25,8 +23,6 @@ namespace SerializeConsoleApp
             };
 
             DriveInfo[] drives = DriveInfo.GetDrives();
-            //Console.Write("Выберите диск в котором хотите создать файл, написав его порядковый номер: ");
-            //int number = int.Parse(Console.ReadLine());
 
             bool check = false;
             int number = 0;
@@ -58,7 +54,7 @@ namespace SerializeConsoleApp
                 }
 
             }
-            path = drives[number].Name;
+            string path = drives[number].Name;
             Console.WriteLine("Выбран диск {0}", path);
 
             foreach (var directory in drives[number].RootDirectory.EnumerateDirectories())
@@ -70,6 +66,7 @@ namespace SerializeConsoleApp
             var directoryName = Console.ReadLine();
             path += directoryName;
 
+            Console.Clear();
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
 
@@ -86,6 +83,28 @@ namespace SerializeConsoleApp
                     writer.Write(pc.CPU);
                 }
             }
+
+            Console.WriteLine("\nДесериализация:");
+            List<PC> newPcList = new List<PC>();
+
+            using (BinaryReader reader = new BinaryReader(File.Open(path, FileMode.OpenOrCreate)))
+            {
+                for (int i = 0; reader.PeekChar() > -1; i++)
+                {
+                    PC pc = new PC();
+                    pc.Brand = reader.ReadString();
+                    pc.SerialNumber = reader.ReadString();
+                    pc.CPU = reader.ReadString();
+
+                    newPcList.Add(pc);
+                }
+            }
+
+            foreach (var pc in newPcList)
+            {
+                Console.WriteLine($"{pc.Brand} {pc.SerialNumber} {pc.CPU}");
+            }
+            
             Console.ReadLine();
         }
     }

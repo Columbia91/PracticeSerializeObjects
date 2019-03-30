@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLib", "ClassLib\ClassL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerializeConsoleApp", "SerializeConsoleApp\SerializeConsoleApp.csproj", "{09200C33-5C39-420A-A3FA-DC5CD2D8CB20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeserializeConsoleApp", "DeserializeConsoleApp\DeserializeConsoleApp.csproj", "{2D442C34-F255-45B9-A86E-CE877B7DC4EA}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{09200C33-5C39-420A-A3FA-DC5CD2D8CB20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09200C33-5C39-420A-A3FA-DC5CD2D8CB20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09200C33-5C39-420A-A3FA-DC5CD2D8CB20}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2D442C34-F255-45B9-A86E-CE877B7DC4EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2D442C34-F255-45B9-A86E-CE877B7DC4EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2D442C34-F255-45B9-A86E-CE877B7DC4EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2D442C34-F255-45B9-A86E-CE877B7DC4EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
